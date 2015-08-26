@@ -8,3 +8,4 @@ Examples of request and reponse: /52nSos311/doc/fzj
 
 Configuration of SOS : /52nSos311/doc/howto/how2install_SOS.pdf
 
+Contact: anusuriya.devaraju@csiro.au, j.sorg@fz-juelich.de
