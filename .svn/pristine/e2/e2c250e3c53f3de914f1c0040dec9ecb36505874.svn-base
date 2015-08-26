@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="52n-sos-coding/src/main/java"/>
+	<classpathentry kind="src" path="52n-sos-core/src/main/java"/>
+	<classpathentry kind="src" path="52n-sos-ogc/src/main/java"/>
+	<classpathentry kind="src" path="52n-sos-dao-postgis/src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-gml-3.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-om-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-ows-1.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-schema-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-sensorML-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-sos-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-sos-xml-sweCommon-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-filter-v20-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-gml-v321-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-om-v20-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-sampling-v20-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-sos-v20-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-sweCommon-v20-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/52n-xml-swes-v20-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/joda-time-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/jts-1.11.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.1-901.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/xmlbeans-2.5.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

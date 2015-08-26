@@ -1,0 +1,9 @@
+JMeter HowTo
+
+
+- download Apache JMeter Version 2.3 or higher.
+- execute jMeter.bat in /bin directory
+- open sos_test.jmx
+- read comments inline and set necessary fields
+- execute file by clicking "start" (STRG-R)
+- check results

@@ -1,0 +1,119 @@
+#####################################################################
+# Copyright (C) 2008
+# by 52 North Initiative for Geospatial Open Source Software GmbH
+#
+# Contact: Andreas Wytzisk
+# 52 North Initiative for Geospatial Open Source Software GmbH
+# Martin-Luther-King-Weg 24
+# 48155 Muenster, Germany
+# info@52north.org
+#
+# This program is free software; you can redistribute and/or modify it under 
+# the terms of the GNU General Public License version 2 as published by the 
+# Free Software Foundation.
+#
+# This program is distributed WITHOUT ANY WARRANTY; even without the implied
+# WARRANTY OF MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program (see gnu-gpl v2.txt). If not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA or
+# visit the Free Software Foundation web page, http://www.fsf.org.
+#
+# Author: <LIST OF AUTHORS/EDITORS>
+# Created: 2005-08-15
+# Modified: <DATE OF LAST MODIFICATION (optional line)>
+#####################################################################
+
+####################################################################
+### SOS configuration
+####################################################################
+
+# DAOFactory instance configuration
+# put in the classname of the specific DAOFactory implementation including the packagename (CHANGE!)
+DAOFactory=org.n52.sos.ds.pgsql.PGSQLDAOFactory
+
+### Listener configuration
+### comma seperated list of the classnames of the listeners (no whitespace allowed!)
+LISTENERS=org.n52.sos.GetCapabilitiesListener,org.n52.sos.GetObservationListener,org.n52.sos.DescribeSensorListener,org.n52.sos.GetResultListener,org.n52.sos.GetFeatureOfInterestListener,org.n52.sos.GetFeatureOfInterestTimeListener,org.n52.sos.GetDomainFeatureListener,org.n52.sos.UpdateSensorListener,org.n52.sos.InsertObservationListener,org.n52.sos.RegisterSensorListener,org.n52.sos.DescribeFeatureTypeListener
+
+### absoulte path and name of the skeleton file for the capabilities document
+SKELETONFILE=/WEB-INF/conf/capabilities/capabilities_skeleton.xml
+
+### absoulte path and name of the skeleton mobile file for the capabilities document
+SKELETONFILEMOBILE=/WEB-INF/conf/capabilities/capabilities_skeleton_mobile.xml
+
+### absoulte path of the directory with the sensor descriptions in sensorML format
+SENSORDIR=/home/aidaadmin/sensorMl/sensorML_intern
+
+### level for logging
+LOGLEVEL=DEBUG
+
+### absolute path to directory where the log files should be located to
+LOGDIR=/var/log/tomcat6/ibg3sosV311.log
+
+### implementation of IOMEncoder used to encode observations (has to be reimplemented, if new observation types should be supported)
+OMENCODER=org.n52.sos.encode.impl.OMEncoder
+
+### implementation of IGMLEncoder used to encode observations (has to be reimplemented, if new feature types for featureOfInterests should be supported)
+GMLENCODER=org.n52.sos.encode.impl.GMLEncoder
+
+### property indicates, whether SOS supports mobile requests
+MOBILEENABLED=true
+
+### HttpPostRequestDecoder implementation (implementation of IHttpPostRequestDecoder)
+POSTREQUESTDECODER=org.n52.sos.decode.impl.HttpPostRequestDecoderMobile
+
+### HttpGetRequestDecoder implementation (implementation of IHttpGetRequestDecoder)
+GETREQUESTDECODER=org.n52.sos.decode.impl.HttpGetRequestDecoderMobile
+
+### SosResponseEncoder implementation (implementation of ISosResponseEncoder)
+RESPONSEENCODER=org.n52.sos.encode.impl.SosResponseEncoder
+
+### SensorMLEncoder implementation (implementation of ISensorMLEncoder)
+SENSORMLENCODER=org.n52.sos.encode.impl.SensorMLEncoder
+
+### property indicates, whether SOS supports quality information in Observtions (true) or not (false)
+SUPPORTSQUALITY=false
+
+### property keeps a list of all EPSG codes for which the SOS has to switch coordinates; 
+SWITCHCOORDINATESFOREPSG=2044-2045;2081-2083;2085-2086;2093;2096-2098;2105-2132;2169-2170;2176-2180;2193;2200;2206-2212;2319;2320-2462;2523-2549;2551-2735;2738-2758;2935-2941;2953;3006-3030;3034-3035;3058-3059;3068;3114-3118;3126-3138;3300-3301;3328-3335;3346;3350-3352;3366;3416;4001-4999;20004-20032;20064-20092;21413-21423;21473-21483;21896-21899;22171;22181-22187;22191-22197;25884;27205-27232;27391-27398;27492;28402-28432;28462-28492;30161-30179;30800;31251-31259;31275-31279;31281-31290;31466-31700
+
+###property indicates, whether SOS encodes the complete FOI-instance within an Observation instance or just the FOI id
+FOI_ENCODED_IN_OBSERVATION=true
+
+### time of lease for result template in getResult operation
+LEASE=600
+
+### token seperator in result element
+TOKENSEPERATOR=,
+
+### tuple seperator in result element
+TUPLESEPERATOR=;
+
+### decimal separator in result element
+DECIMALSEPARATOR=.
+
+### date format of GML
+GMLDATEFORMAT=
+
+### no data value ###
+NODATAVALUE=noData
+
+####character encoding for response documents################
+CHARACTERENCODING=UTF-8
+
+#### prefix URN for the spatial reference system  ################
+SRS_NAME_PREFIX=urn:ogc:def:crs:EPSG
+
+### capabilitiesCacheController implementation (CapabilitiesCacheController)
+CAPABILITIESCACHECONTROLLER=org.n52.sos.cache.CapabilitiesCacheController
+
+### capabilitiesCacheUpdateInterval (0 = no automatic update!)
+CAPABILITIESCACHEUPDATEINTERVAL=5
+
+############# ibg-3 cutomization ##############
+# quality flag within observation table (field string_value)
+SUPPORTS_ODM_QUALITY=false 
+ 

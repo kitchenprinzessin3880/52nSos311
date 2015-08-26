@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <parent>
+    <artifactId>52n-sos</artifactId>
+    <groupId>org.n52.swe.sos</groupId>
+    <version>3.1</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>${parent.groupId}</groupId>
+  <artifactId>52n-sos-dao-postgis</artifactId>
+  <packaging>jar</packaging>
+  <name>52North SOS PostGIS DAO</name>
+  <description>52North Sensor Observation Service Data Access Objects for PostGIS</description>
+  <version>${parent.version}</version>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>52n-sos-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>52n-sos-ogc</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>8.3-603.jdbc4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.postgis</groupId>
+      <artifactId>postgis-jdbc</artifactId>
+      <version>1.1.6</version>
+    </dependency>
+    <!-- inherited -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.vividsolutions</groupId>
+      <artifactId>jts</artifactId>
+    </dependency>
+    <dependency>
+		<groupId>joda-time</groupId>
+		<artifactId>joda-time</artifactId>
+	</dependency>
+  </dependencies>
+
+  <repositories>
+   <repository>
+     <id>refractions</id>
+     <name>Refractions Research Maven 2 Repository</name>
+     <url>http://lists.refractions.net/m2</url>
+   </repository>
+  </repositories>
+  
+</project>

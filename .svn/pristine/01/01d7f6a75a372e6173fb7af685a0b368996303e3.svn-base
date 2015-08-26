@@ -1,0 +1,10 @@
+log4j.rootLogger=DEBUG, MyConsoleAppender, MyRoFiAppender
+
+log4j.appender.MyConsoleAppender=org.apache.log4j.ConsoleAppender
+log4j.appender.MyConsoleAppender.layout=org.apache.log4j.PatternLayout
+log4j.appender.MyConsoleAppender.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c: %m%n
+
+log4j.appender.MyRoFiAppender=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MyRoFiAppender.file=/var/log/tomcat6/ibg3sosV311.log
+log4j.appender.MyRoFiAppender.layout=org.apache.log4j.PatternLayout
+log4j.appender.MyRoFiAppender.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c: %m%n

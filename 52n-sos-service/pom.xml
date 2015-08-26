@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<parent>
+		<artifactId>52n-sos</artifactId>
+		<groupId>org.n52.swe.sos</groupId>
+		<version>3.1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${parent.groupId}</groupId>
+	<artifactId>52n-sos-service</artifactId>
+	<packaging>war</packaging>
+	<name>52North SOS Service</name>
+	<description>52North Sensor Observation Service WAR
+	</description>
+	<version>${parent.version}</version>
+	<build>
+		<finalName>${conf.sos.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1-alpha-1</version>
+				<configuration>
+					<filteringDeploymentDescriptors>true
+					</filteringDeploymentDescriptors>
+					<webResources>
+						<resource>
+							<directory>src/main/webapp </directory>
+							<filtering>true</filtering>
+						</resource>
+						<resource>
+							<directory>src/main/webapp/WEB-INF </directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF</targetPath>
+						</resource>
+						<resource>
+							<directory>src/main/webapp/WEB-INF/conf
+							</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF/conf
+							</targetPath>
+						</resource>
+						<resource>
+							<directory>src/main/webapp/WEB-INF/conf/capabilities </directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF/conf/capabilities
+							</targetPath>
+						</resource>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF/classes </targetPath>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>52n-sos-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>52n-sos-coding</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<!-- Profile for deploy with PostGIS -->
+		<profile>
+			<id>with-deploy</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${pom.groupId}</groupId>
+					<artifactId>52n-sos-dao-postgis</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<finalName>${conf.sos.name}</finalName>
+				<plugins>
+					<plugin>
+						<inherited>true</inherited>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>verify-deploy</id>
+								<phase>install</phase>
+								<!-- comment out by ASD - error while deploying war on tomcat with 
+									cargo -->
+								<!-- goals> <goal>deployer-deploy</goal> </goals -->
+							</execution>
+							<execution>
+								<id>clean-undeploy</id>
+								<phase>pre-clean</phase>
+								<!-- comment out by ASD - error while deploying war on tomcat with 
+									cargo -->
+								<!-- goals> <goal>deployer-undeploy</goal> </goals -->
+							</execution>
+						</executions>
+
+						<configuration>
+
+							<!-- Container Configuration -->
+							<container>
+								<containerId>tomcat7x</containerId>
+								<type>remote</type>
+							</container>
+
+							<!-- Configuration to use with the container -->
+							<configuration>
+								<type>runtime</type>
+								<properties>
+
+									<cargo.tomcat.manager.url>
+										${deploy.tomcat.manager.url}/text
+									</cargo.tomcat.manager.url>
+									<cargo.remote.username>
+										${deploy.tomcat.manager.username}
+									</cargo.remote.username>
+									<cargo.remote.password>
+										${deploy.tomcat.manager.password}
+									</cargo.remote.password>
+								</properties>
+								<deployables>
+									<deployable>
+										<groupId>${pom.groupId}</groupId>
+										<artifactId>${pom.artifactId}</artifactId>
+										<type>war</type>
+									</deployable>
+								</deployables>
+
+
+							</configuration>
+
+							<!-- Deployer and Deployables configuration -->
+							<deployer>
+								<type>remote</type>
+								<deployables>
+									<deployable>
+										<groupId>${pom.groupId}</groupId>
+										<artifactId>${pom.artifactId}</artifactId>
+										<type>war</type>
+									</deployable>
+								</deployables>
+							</deployer>
+
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- Profile for deploy with WFS and PostGIS -->
+		<profile>
+			<id>with-deploy-wfs</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>${pom.groupId}</groupId>
+					<artifactId>52n-sos-wfs-connector</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<inherited>true</inherited>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>verify-deploy</id>
+								<phase>install</phase>
+								<goals>
+									<goal>deployer-deploy</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>clean-undeploy</id>
+								<phase>pre-clean</phase>
+								<goals>
+									<goal>deployer-undeploy</goal>
+								</goals>
+							</execution>
+						</executions>
+
+						<configuration>
+
+							<!-- Container Configuration -->
+							<container>
+								<containerId>tomcat7x</containerId>
+								<type>remote</type>
+							</container>
+
+							<!-- Configuration to use with the container -->
+							<configuration>
+								<type>runtime</type>
+								<properties>
+									<cargo.tomcat.manager.url> ${deploy.tomcat.manager.url}
+									</cargo.tomcat.manager.url>
+									<cargo.remote.username> ${deploy.tomcat.manager.username}
+									</cargo.remote.username>
+									<cargo.remote.password> ${deploy.tomcat.manager.password}
+									</cargo.remote.password>
+
+
+								</properties>
+								<deployables>
+									<deployable>
+										<groupId>${pom.groupId}</groupId>
+										<artifactId>${pom.artifactId}</artifactId>
+										<type>war</type>
+									</deployable>
+								</deployables>
+
+							</configuration>
+
+							<!--Deployer and Deployables configuration -->
+							<deployer>
+								<type>remote</type>
+								<deployables>
+									<deployable>
+										<groupId>${pom.groupId}</groupId>
+										<artifactId>${pom.artifactId}</artifactId>
+										<type>war</type>
+									</deployable>
+								</deployables>
+							</deployer>
+
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

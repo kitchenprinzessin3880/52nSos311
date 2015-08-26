@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="52n-sos-service">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="52n-sos-core-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sos-core/52n-sos-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="52n-sos-ogc-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sos-ogc/52n-sos-ogc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="52n-sos-coding-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sos-coding/52n-sos-coding">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="52n-sos-dao-postgis-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/52n-sos-dao-postgis/52n-sos-dao-postgis">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="ibg3sosV311"/>
+        <property name="java-output-path" value="/52n-sos-service/target/classes"/>
+    </wb-module>
+</project-modules>
